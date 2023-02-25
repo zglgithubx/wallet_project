@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    username: root
+    password: 54188
+    url: jdbc:mysql://localhost:3306/wallet?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    #项目启动执行建表语句，classpath指定sql文件的位置
+    db-name: wallet
+    db-url: jdbc:mysql://localhost:3306/?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+  sql:
+    init:
+      encoding: UTF-8
+      platform: mysql
+      separator: ;
+      mode: always
+      schema-locations:
+        - classpath:sql/init.sql
