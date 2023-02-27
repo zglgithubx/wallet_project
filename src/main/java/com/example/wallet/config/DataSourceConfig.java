@@ -1,4 +1,5 @@
 package com.example.wallet.config;
+
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
 import org.slf4j.Logger;
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Scope;
 
 import javax.sql.DataSource;
-import java.sql.SQLException;
+
 /**
  * @ClassName DataSourceConfig
  * @Author ZhuGuangLiang <786945363@qq.com>
@@ -22,6 +23,7 @@ import java.sql.SQLException;
 @Configuration
 public class DataSourceConfig {
 	private static final Logger LOG = LoggerFactory.getLogger(DataSourceConfig.class);
+	private DruidDataSource dataSource;
 
 	/**
 	 * spring监控，druid的拦截器
@@ -56,8 +58,6 @@ public class DataSourceConfig {
 		return advisor;
 	}
 
-	private DruidDataSource dataSource;
-
 	@Bean
 	@DependsOn("DBInitConfig")
 	public DataSource init(
@@ -68,8 +68,8 @@ public class DataSourceConfig {
 			@Value("${spring.datasource.password}")
 					String password,
 			@Value("${spring.datasource.url}")
-					String url)
-	{
+					String url) {
+
 		if (dataSource != null) {
 			return dataSource;
 		}

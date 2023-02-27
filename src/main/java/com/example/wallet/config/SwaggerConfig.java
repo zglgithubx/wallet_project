@@ -20,8 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
 	@Bean
-	public Docket webApiConfig(){
-
+	public Docket webApiConfig() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
 				.apis(RequestHandlerSelectors.any())
@@ -29,7 +28,7 @@ public class SwaggerConfig {
 				.build();
 	}
 
-	private ApiInfo webApiInfo(){
+	private ApiInfo webApiInfo() {
 		return new ApiInfoBuilder()
 				.title("钱包项目的API文档")
 				.description("本文档描述了钱包项目接口定义")

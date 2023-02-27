@@ -43,7 +43,6 @@ public class DBInitConfig {
 	/**
 	 * 需要创建的数据名称
 	 */
-
 	@Value("${spring.datasource.db-name}")
 	private String dbName;
 
@@ -51,13 +50,12 @@ public class DBInitConfig {
 	public void init() {
 		try {
 			Class.forName(driver);
-		} catch (ClassNotFoundException  e) {
+		} catch (ClassNotFoundException e) {
 			LOG.error("JDBC URL解析错误", e);
 		}
 
 		try (Connection connection = DriverManager.getConnection(url, username, password);
-			 Statement statement = connection.createStatement())
-		{
+			 Statement statement = connection.createStatement()) {
 			String sal = "select schema_name from information_schema.schemata where schema_name = " + "'" + dbName + "'";
 			//查询返回的结果集
 			ResultSet resultSet = statement.executeQuery(sal);
